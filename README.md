@@ -48,7 +48,7 @@ CTF writeup for MoneyBox on Proving Grounds
 <img width="523" alt="Capture12" src="https://github.com/user-attachments/assets/06ef1b1f-4794-4df0-ad29-8ba48cf2de08" />
 
 - Enumeration
-- The first thing I do is run the linpeas script to get a better idea of what we're working with and maybe find some simple Privilege Escallation footholds.
+- The first thing I do is run the linpeas script to get a better idea of what we're working with and maybe find some simple Privilege Escalation footholds.
 
 <img width="1128" alt="Capture13" src="https://github.com/user-attachments/assets/1e0827b1-c6d1-4902-8ef0-1094fae93ec6" />
 
@@ -66,6 +66,6 @@ CTF writeup for MoneyBox on Proving Grounds
 
 <img width="1128" alt="Capture17" src="https://github.com/user-attachments/assets/73806b88-4a23-4270-b1ab-533b915d6339" />
 
-- Following the directions on GTFObins escalates our privileges to root.
+- Following the directions on GTFObins escalates our privileges to root, giving us the final flag and completing the box.
 
 <img width="667" alt="Capture18" src="https://github.com/user-attachments/assets/01619e15-be5d-4fde-a6ba-f370a303e7b6" />
