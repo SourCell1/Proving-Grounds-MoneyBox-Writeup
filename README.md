@@ -3,42 +3,29 @@ CTF writeup for MoneyBox on Proving Grounds
 
 - Nmap
 
-kali@kali:~ $ nmap -sC -sV -p- --min-rate 5000 192.168.187.230
-Starting Nmap 7.93 ( https://nmap.org ) at 2025-03-03 22:57 EST
-Nmap scan report for 192.168.187.230
-Host is up (0.094s latency).
-Not shown: 65161 filtered tcp ports (no-response), 371 closed tcp ports (conn-refused)
-PORT   STATE SERVICE VERSION
-21/tcp open  ftp     vsftpd 3.0.3
-| ftp-anon: Anonymous FTP login allowed (FTP code 230)
-|_-rw-r--r--    1 0        0         1093656 Feb 26  2021 trytofind.jpg
-| ftp-syst:
-|   STAT:
-| FTP server status:
-|      Connected to ::ffff:192.168.45.190
-|      Logged in as ftp
-|      TYPE: ASCII
-|      No session bandwidth limit
-|      Session timeout in seconds is 300
-|      Control connection is plain text
-|      Data connections will be plain text
-|      At session startup, client count was 2
-|      vsFTPd 3.0.3 - secure, fast, stable
-|_End of status
-22/tcp open  ssh     OpenSSH 7.9p1 Debian 10+deb10u2 (protocol 2.0)
-| ssh-hostkey:
-|   2048 1e30ce7281e0a23d5c28888b12acfaac (RSA)
-|   256 019dfafbf20637c012fc018b248f53ae (ECDSA)
-|_  256 2f34b3d074b47f8d17d237b12e32f7eb (ED25519)
-80/tcp open  http    Apache httpd 2.4.38 ((Debian))
-|_http-title: MoneyBox
-|_http-server-header: Apache/2.4.38 (Debian)
-Service Info: OSs: Unix, Linux; CPE: cpe:/o:linux:linux_kernel     
+<img width="613" alt="Capture2" src="https://github.com/user-attachments/assets/508cf8bd-445a-4adc-a679-41426a95af1e" />
 
-Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
-Nmap done: 1 IP address (1 host up) scanned in 37.84 seconds
-kali@kali:~ $ 
+- Ports 21, 22,  and 80 are all open.
 
-- Ftp looks interesting so I check for anonymous login
+- Port 80
 
+<img width="1128" alt="Capture3" src="https://github.com/user-attachments/assets/4edc3909-ae89-4d64-b9a0-ca07d3bd2ff2" />
+
+- Nothing much on the main page so I fuzz directories with dirb.
+
+<img width="451" alt="Capture4" src="https://github.com/user-attachments/assets/e9b0fb66-99cb-4a5a-849c-83878569cbdc" />
+
+- The endpoint /blogs could be interesting.
+
+<img width="1128" alt="Capture5" src="https://github.com/user-attachments/assets/8b7f67e7-ac44-4d72-83ce-fcabacbe06ba" />
+
+- This page also appears empty but inspecting the source code gives us another directory to check out.
+
+<img width="1128" alt="Capture6" src="https://github.com/user-attachments/assets/1edd3f16-e0a8-4fab-8a8d-b90e264a8ab5" />
+
+<img width="1128" alt="Capture7" src="https://github.com/user-attachments/assets/772f3ce7-3ec7-423f-a5c5-0139d1f6935a" />
+
+- Evidently there is "nothing in this page" so i check the source code again to find what looks like a potential password.
+
+<img width="1128" alt="Capture8" src="https://github.com/user-attachments/assets/50226698-fa35-43df-abac-b757726384d7" />
 
